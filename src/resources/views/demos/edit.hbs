@@ -1,0 +1,22 @@
+<div class="mt-4">
+    <h3>Chinh sua</h3>
+        <form class="mt-4" method="POST" action="/demos/{{demo._id}}?_method=PUT">
+        <div class="form-group">
+            <label for="name">Ten SP</label>
+            <input type="text" class="form-control" value="{{demo.name}}" id="name" name="name">            
+        </div>
+        <div class="form-group">
+            <label for="description">Mo ta</label>
+            <input type="text" class="form-control" value="{{demo.description}}" id="description" name="description">            
+        </div>
+        <div class="form-group">
+            <label for="videoID">Video ID</label>
+            <input type="text" class="form-control" value="{{demo.videoID}}" id="videoID" name="videoID">            
+        </div>
+        <div class="form-group">
+            <label for="level">Level</label>
+            <input type="text" class="form-control" value="{{demo.level}}" id="level" name="level">            
+        </div>
+        <button type="submit" class="btn btn-primary">Luu</button>
+</form>
+</div>

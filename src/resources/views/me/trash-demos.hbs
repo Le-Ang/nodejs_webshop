@@ -1,0 +1,96 @@
+<div class="mt-4">
+    
+    <div>      
+      <a href="/me/stored/demos">Danh sach khoa hoc</a>
+      <h3>SP da xoa</h3>
+    </div>
+
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Ten Sp</th>
+                <th scope="col">Level</th>
+                <th scope="col">Thoi gian xoa</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each demos}}
+            {{#if deleted}}
+            <tr>
+                <th scope="row">{{this._id}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.level}}</td>
+                <td>{{this.deletedAt}}</td>
+                <td>
+                    <a href="" class="btn btn-link btn-restore" data-id="{{this._id}}">Khoi phuc</a>
+                    <a href="" class="btn btn-link" data-bs-toggle="modal"data-id="{{this._id}}" data-bs-target="#delete-demo-modal">Xoa vinh vien</a>
+                </td>
+            </tr>
+            {{!-- {{else}}
+              <tr>
+                <td colspan="5" class="text-center">
+                  Thung rac trong
+                  <a href="/me/stored/demos">Danh sach SP</a>
+                </td>
+              </tr> --}}
+            {{/if}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+{{!-- Confirm delete  --}}
+<div class="modal fade" id="delete-demo-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Warning</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this product forever?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button id="btn-delete-demo" type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-demo-form" method="POST"></form>
+<form name="restore-demo-form" method="POST"></form>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const exampleModal = document.getElementById('delete-demo-modal')
+    var deleteForm = document.forms['delete-demo-form']
+    var restoreForm = document.forms['restore-demo-form']
+    var demoId
+    var restoreBtn = $('.btn-restore')
+    //when dialog confirm clicked
+    if (exampleModal) {        
+        exampleModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget
+            demoId = button.getAttribute('data-id')
+        })    
+    }
+    const btnDeleteDemo = document.getElementById('btn-delete-demo')
+    
+    //when delete product btn clicked
+    btnDeleteDemo.onclick = function(){
+        deleteForm.action = '/demos/'+ demoId +'/force?_method=DELETE'
+        deleteForm.submit()
+    }    
+    //restore click
+    restoreBtn.click(function (e){
+        e.preventDefault()
+
+        var demoId = $(this).data('id')
+        restoreForm.action = '/demos/'+ demoId +'/restore?_method=PATCH'
+        restoreForm.submit()
+    })
+  })
+</script>
