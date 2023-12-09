@@ -9,6 +9,7 @@ const DemoSchema = new Schema({
     _id: { type: Number, },
     name: { type: String, require: true, maxLength: 255},
     description: { type: String, maxLength: 600},
+    cost: {type: Number},
     image: { type: String, maxLength: 255},
     videoID: { type: String, require: true, maxLength: 255},
     level: { type: String, maxLength: 255},

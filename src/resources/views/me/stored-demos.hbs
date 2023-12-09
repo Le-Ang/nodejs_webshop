@@ -1,13 +1,13 @@
 <form class="mt-4" name="container-form" method="POST" action="/demos/handle-form-action">
     <div>
-      <h3>SP cua toi</h3>
+      <h3>My Item</h3>
       <a href="/me/trash/demos">Thung rac ({{deletedCount}})</a>
     
       <div class="mt-4 d-flex align-items-center">
 
         <select class="form-select-sm checkbox-select-all-options" name="action" required>
-          <option value="">-- Hanh dong --</option>
-          <option value="delete">Xoa</option>
+          <option value="">-- Action --</option>
+          <option value="delete">Delete</option>
         </select>
 
         <button class="btn btn-primary btn-sm check-all-submit-btn" disabled="disabled">Thuc hien</button>
@@ -27,15 +27,19 @@
                   {{{sortable '_id' _sort}}}
                   </th>
                 <th scope="col">
-                  Ten Sp
+                  Name
                   {{{sortable 'name' _sort}}}
                   {{!-- <a href="?_sort&column=name&type=desc"><i class="fa-solid fa-sort"></i></a> --}}
+                </th>
+                <th scope="col">
+                  Cost
+                  {{{sortable 'cost' _sort}}}
                 </th>
                 <th scope="col">
                   Level
                 </th>
                 <th scope="col" colspan="2">
-                  Thoi gian tao
+                  Create At
                 </th>
             </tr>
         </thead>
@@ -50,6 +54,7 @@
                 </td>
                 <th scope="row">{{this._id}}</th>
                 <td>{{this.name}}</td>
+                <td>{{this.cost}}$</td>
                 <td>{{this.level}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
