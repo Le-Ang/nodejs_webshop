@@ -4,18 +4,14 @@ const { multipleMongooseToObject} = require('../../util/mongoose')
 class SiteController {
     //[Get]
     home(req, res,next){
-        Demo.find({})
-            .then(demos => {
+        Demo.find({}).limit(3)
+            .then((demos) => {
                 res.render('home', {
-                    demos: multipleMongooseToObject(demos)})
+                    demos: multipleMongooseToObject(demos),
+                })                
             })
-            .catch(next)
-        // res.render('home');
-    }
-    //[Get]/Search
-    search(req, res) {
-        res.render('search');
-    }
+            .catch(next)        
+        }    
 }
 
 module.exports = new SiteController();

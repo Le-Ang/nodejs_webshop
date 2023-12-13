@@ -1,9 +1,30 @@
-<div class="mt-4">
-    <form method="get" action="">
-        <div class="form-group">
-            <label for="search-input">SEARCH</label>
-            <input type="text" name="q" class="form-control" id="search-input" placeholder="fill in the form">
+<section>
+    <div class="text-center container py-5">
+        <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onkeyup="sendata(this)"/>
+        <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i></a>
+        </span>
+    </div>
+        <div class="row mt-4">      
+            {{#each demos}}   
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card card-demo-item">
+                        <div class="hover-overlay">  
+                            <a href="/demos/{{this.slug}}">
+                                <img src="{{this.image}}" class="card-img-top" alt="{{this.name}}">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a href="/demos/{{this.slug}}">
+                                <h5 class="card-title">{{this.name}}</h5>
+                            </a>
+                            <p class="card-text">{{this.cost}}$</p>                        
+                            <a href="/demos/{{this.slug}}" class="btn btn-primary">Buy</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}          
         </div>
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-</div>
+    </div>
+</section>

@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const newController = require('../app/controllers/NewsController');
+const newsController = require('../app/controllers/NewsController');
 
-router.get('/:slug', newController.show);
-router.get('/', newController.index);
+router.get('/blogcreate', newsController.create)
+router.post('/blogstore', newsController.store)
+router.get('/:id/blogedit', newsController.edit)
+router.post('/handle-form-action', newsController.handleFormActions)
+router.put('/:id', newsController.update)
+router.delete('/:id', newsController.delete)
+router.get('/:slug', newsController.show)
+router.get('/', newsController.showblog)
 
 module.exports = router;

@@ -10,24 +10,29 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/news">Blogs</a>
+            <a class="nav-link active" aria-current="page" href="/search">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/blogs">Blogs</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/cart">Cart</a>
           </li>
-          <li class="nav-item">
+          {{!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/login">Login</a>
-          </li>
+          </li> --}}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://lh3.googleusercontent.com/ogw/AKPQZvwG5ITJwT-RPOf1PMvSgyh6zcVg23ZqiIZSRwuy=s32-c-mo" alt="" class="user-avatar">
-                Autumn Boy
+                <img src="/img/avatar.jpg" alt="" class="user-avatar">
             </a>
             <ul class="dropdown-menu">
+              {{!-- <li><a class="dropdown-item" href="/login/info">Account Details</a></li>
+              <li><hr class="dropdown-divider"></li> --}}
               <li><a class="dropdown-item" href="/demos/create">Create Item</a></li>
-              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/me/stored/demos">My Item</a></li>
-              <li><a class="dropdown-item" href="/news">My Blogs</a></li>
+              <li><hr class="dropdown-divider"></li>              
+              <li><a class="dropdown-item" href="/blogs/blogcreate">Create Blogs</a></li>              
+              <li><a class="dropdown-item" href="/me/stored/blogs">My Blog</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Log Out</a></li>
             </ul>

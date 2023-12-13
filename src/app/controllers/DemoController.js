@@ -17,7 +17,9 @@ class DemoController {
 
     //[Get] /demos/store
     store(req, res, next) {
-        req.body.image = `https://img.youtube.com/vi/${req.body.videoID}/sddefault.jpg`
+        req.body.image = `https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/${req.body.image}.png`
+        req.body.image1 = `https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/${req.body.image1}.png`
+        req.body.image2 = `https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/${req.body.image2}.png`
         const demo = new Demo(req.body)
         demo
             .save()

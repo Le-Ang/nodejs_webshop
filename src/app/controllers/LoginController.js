@@ -1,10 +1,16 @@
-class LoginController {
-    index(req, res) {
-        res.render('login');
-    }
+const { mongooseToObject } = require('../../util/mongoose')
+const Account = require('../models/Account');
 
-    show(req, res) {
-        res.send('NEW DETAIL!');
+class LoginController {
+    login(req,res){
+        res.render('login')
+    }
+    info(req, res, next) {
+        Account.findOne({slug: req.params.slug})
+            .then(account =>
+                res.render('login/info', { account: mongooseToObject(account) })
+            )
+            .catch(next)
     }
 }
 

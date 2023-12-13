@@ -1,5 +1,6 @@
 const Demo = require('../models/Demo');
-const { multipleMongooseToObject} = require('../../util/mongoose')
+const { multipleMongooseToObject} = require('../../util/mongoose');
+const Blog = require('../models/Blog');
 
 class MeController {
     //[Get]/me/stored/Demos
@@ -11,6 +12,13 @@ class MeController {
                     deletedCount,
                     demos: multipleMongooseToObject(demos)})
             })
+            .catch(next)
+    }
+    storedBlogs(req, res, next) {
+        Blog.find({})
+            .then(blogs =>
+                res.render('me/stored-blogs', { blogs: multipleMongooseToObject(blogs) })
+            )
             .catch(next)
     }
 

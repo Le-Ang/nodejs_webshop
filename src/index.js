@@ -37,6 +37,7 @@ app.engine('hbs', handlebars.engine({
 ));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources','views'));
+app.use("/img", express.static(path.join(__dirname, "/public/img")));
 
 //Routes init
 route(app);
